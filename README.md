@@ -31,3 +31,7 @@ If you reference this work:
   year={2025},
   note={arXiv preprint (to appear)}
 }
+---
+
+### Keywords
+`Finance AI` • `LLM Evaluation` • `FinBERT` • `DistilBERT` • `BloombergGPT` • `NVIDIA Research` • `Market Sentiment`
