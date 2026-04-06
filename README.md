@@ -2,7 +2,7 @@
 
 ### Author
 **Sai Mahesh Sandeboina**  
-Pace University, USA  
+Independent Researcher, USA  
 📧 saimaheshsandeboina931@gmail.com  
 
 ---
