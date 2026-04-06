@@ -1,0 +1,54 @@
+@inproceedings{araci2019finbert,
+  title={FinBERT: Financial Sentiment Analysis with Pre-trained Language Models},
+  author={Araci, Do{\u g}u},
+  booktitle={Proceedings of the ACL Student Research Workshop},
+  year={2019}
+}
+
+@article{sanh2019distilbert,
+  title={DistilBERT, a distilled version of BERT: smaller, faster, cheaper and lighter},
+  author={Sanh, Victor and Debut, Lysandre and Chaumond, Julien and Wolf, Thomas},
+  journal={arXiv preprint arXiv:1910.01108},
+  year={2019}
+}
+
+@inproceedings{wolf2020transformers,
+  title={Transformers: State-of-the-Art Natural Language Processing},
+  author={Wolf, Thomas and Debut, Lysandre and Sanh, Victor and others},
+  booktitle={Proceedings of EMNLP 2020: System Demonstrations},
+  year={2020}
+}
+
+@misc{yfinance,
+  title={yfinance: Yahoo! Finance market data downloader},
+  author={Tsiolas, Ran A. and community},
+  howpublished={\url{https://github.com/ranaroussi/yfinance}},
+  year={2024}
+}
+
+@misc{feedparser,
+  title={feedparser: Universal Feed Parser for Python},
+  author={Kellan, Mark and community},
+  howpublished={\url{https://github.com/kurtmckee/feedparser}},
+  year={2024}
+}
+
+@misc{prosusfinbert,
+  title={ProsusAI/finbert (Hugging Face model card)},
+  author={Prosus AI},
+  year={2020},
+  howpublished={\url{https://huggingface.co/ProsusAI/finbert}}
+}
+
+@misc{sst2,
+  title={distilbert-base-uncased-finetuned-sst-2-english (Hugging Face model card)},
+  author={Hugging Face},
+  year={2020},
+  howpublished={\url{https://huggingface.co/distilbert-base-uncased-finetuned-sst-2-english}}
+}
+
+@misc{stooq,
+  title={Stooq: Free historical market data},
+  year={2025},
+  howpublished={\url{https://stooq.com}}
+}

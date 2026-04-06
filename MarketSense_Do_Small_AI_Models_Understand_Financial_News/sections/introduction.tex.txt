@@ -1,0 +1,7 @@
+\section{Introduction}
+
+Financial markets react to information quickly, and news sentiment is often used as a proxy for short-horizon beliefs. Recent progress in language modeling shows that large models can extract rich semantics, but in production settings (research labs, funds, and startups) smaller models are preferred for cost, latency, and governance reasons. This raises a practical question: \emph{Do small, domain-adapted models capture economically meaningful sentiment?}
+
+We study this in the context of same-day stock returns using compact, widely-available models: FinBERT \citep{araci2019finbert,prosusfinbert}---a BERT-base model adapted to finance---and DistilBERT \citep{sanh2019distilbert,sst2}---a compressed general-purpose model fine-tuned on sentiment. Using headlines for nine large-cap tickers (AAPL, AMZN, GS, JPM, MS, MSFT, NVDA, TSLA, WMT) from \textasciitilde April--October 2025, we compute daily sentiment per ticker and relate it to open$\to$close returns.
+
+Our main result is simple and actionable: FinBERT’s daily sentiment exhibits a small but statistically significant positive correlation with same-day returns, while DistilBERT shows no consistent signal. The implication is that \emph{domain adaptation can matter more than raw model size} for resource-efficient financial NLP.

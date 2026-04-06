@@ -1,0 +1,31 @@
+\documentclass[10pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath, amssymb}
+\usepackage{hyperref}
+\usepackage[numbers]{natbib}
+\graphicspath{{./figures/}}
+
+\title{MarketSense: Do Small AI Models Understand Financial News?\\
+\vspace{0.25em}\large An Empirical Study of Compact Language Models and Stock Return Reactions}
+\author{Sai Mahesh Sandeboina\\Pace University, USA\\\texttt{saimaheshsandeboina931@gmail.com}}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This paper investigates whether compact, domain-adapted language models can detect economically meaningful sentiment in financial headlines. Using roughly one thousand news items for nine large-cap tickers between April and October 2025, we compare FinBERT—a finance-tuned model—with DistilBERT—a compressed general model. FinBERT’s daily sentiment correlates positively with same-day stock returns, whereas DistilBERT shows no consistent signal. The results suggest that domain adaptation matters more than model size for resource-efficient financial NLP.
+\end{abstract}
+
+\input{sections/introduction.tex}
+\input{sections/methodology.tex}
+\input{sections/results.tex}
+\input{sections/conclusion.tex}
+
+\small
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+\end{document}

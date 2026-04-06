@@ -1,0 +1,12 @@
+\section{Conclusion}
+
+We ask whether small models “understand’’ financial news in the limited, testable sense of aligning sentiment with same-day stock moves. Our evidence suggests that a compact, finance-tuned model (FinBERT) does extract a weak but economically meaningful signal, whereas a similarly compact general model (DistilBERT) does not. For many practical settings, \emph{domain adaptation beats raw size}.
+
+\paragraph{Limitations.}
+We analyze headlines, not full articles; we consider same-day open$\to$close returns only; and we do not control for confounders (macro releases, earnings timing). Correlations are small and should not be read as trading advice. Re-running the pipeline on different date windows will change sample sizes and noise characteristics.
+
+\paragraph{Future work.}
+Extend to multi-day horizons, intraday bars, richer event controls, and more compact domain models (e.g., finance-tuned DistilBERT or MiniLM). Explore cross-sectional predictability and interaction with volatility regimes.
+
+\paragraph{Ethics and reproducibility.}
+We cite all software and models used \citep{wolf2020transformers,araci2019finbert,prosusfinbert,sanh2019distilbert,sst2,feedparser,stooq} and provide intermediate CSVs and figures to enable replication.

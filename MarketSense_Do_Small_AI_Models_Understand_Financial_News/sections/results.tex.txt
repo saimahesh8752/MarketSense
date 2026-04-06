@@ -1,0 +1,68 @@
+\section{Results}
+
+\subsection{Headline Sentiment vs Same-Day Returns}
+We regress same–day open$\rightarrow$close returns on daily headline sentiment computed by each model. Figures~\ref{fig:finbert_scatter_all} and \ref{fig:distil_scatter_all} show the pooled scatterplots (all tickers, all days). FinBERT exhibits a small but clear positive slope; DistilBERT shows no consistent relation. This visual pattern matches our statistics in Section~\ref{sec:summary_corr}.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.98\linewidth]{figures/fig_finbert_sent_vs_return.png}
+  \caption{FinBERT daily sentiment vs same-day open$\rightarrow$close return (all tickers).}
+  \label{fig:finbert_scatter_all}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.98\linewidth]{figures/fig_distil_sent_vs_return.png}
+  \caption{DistilBERT daily sentiment vs same-day open$\rightarrow$close return (all tickers).}
+  \label{fig:distil_scatter_all}
+\end{figure}
+
+\subsection{Per-Ticker Correlations}
+\label{sec:summary_corr}
+To summarize by name, we compute Pearson $r$ between sentiment and returns per ticker. Figure~\ref{fig:corr_bars} plots these values. FinBERT is positive for most symbols (notably AMZN, JPM, NVDA), while DistilBERT is mixed and often near zero. This supports the hypothesis that domain adaptation matters more than parameter count for this task.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.98\linewidth]{figures/fig_corr_bars_by_ticker.png}
+  \caption{Per-ticker Pearson correlation ($r$) between daily sentiment and same-day return, for FinBERT and DistilBERT.}
+  \label{fig:corr_bars}
+\end{figure}
+
+\subsection{Rolling Sentiment (Stability Check)}
+We also examine 3-day rolling averages of sentiment by ticker to visualize stability and episodes where the two models disagree. Below we show FinBERT rolling sentiment for all nine names; the matching DistilBERT panels are in Appendix~\ref{app:rolling}.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=.31\linewidth]{figures/fig_roll3_AAPL}\hfill
+  \includegraphics[width=.31\linewidth]{figures/fig_roll3_AMZN}\hfill
+  \includegraphics[width=.31\linewidth]{figures/fig_roll3_GS}\\[3pt]
+  \includegraphics[width=.31\linewidth]{figures/fig_roll3_JPM}\hfill
+  \includegraphics[width=.31\linewidth]{figures/fig_roll3_MS}\hfill
+  \includegraphics[width=.31\linewidth]{figures/fig_roll3_MSFT}\\[3pt]
+  \includegraphics[width=.31\linewidth]{figures/fig_roll3_NVDA}\hfill
+  \includegraphics[width=.31\linewidth]{figures/fig_roll3_TSLA}\hfill
+  \includegraphics[width=.31\linewidth]{figures/fig_roll3_WMT}
+  \caption{FinBERT: 3-day rolling sentiment by ticker.}
+\end{figure}
+
+\subsection{Representative Per-Ticker Scatterplots}
+For transparency, Figures~\ref{fig:scatters_aapl} and \ref{fig:scatters_msft} show example per-ticker scatterplots for both models.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=.48\linewidth]{figures/fig_scatter_AAPL_finbert}\hfill
+  \includegraphics[width=.48\linewidth]{figures/fig_scatter_AAPL_distil}
+  \caption{AAPL: FinBERT (left) vs DistilBERT (right) sentiment vs return.}
+  \label{fig:scatters_aapl}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=.48\linewidth]{figures/fig_scatter_MSFT_finbert}\hfill
+  \includegraphics[width=.48\linewidth]{figures/fig_scatter_MSFT_distil}
+  \caption{MSFT: FinBERT (left) vs DistilBERT (right) sentiment vs return.}
+  \label{fig:scatters_msft}
+\end{figure}
+
+\paragraph{Takeaway.}
+Across pooled and per-ticker views, FinBERT’s sentiment correlates positively with same-day returns, while DistilBERT’s signal is weak or inconsistent. This pattern is robust to rolling aggregation and visible in multiple symbols.

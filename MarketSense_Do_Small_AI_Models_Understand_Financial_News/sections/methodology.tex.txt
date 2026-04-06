@@ -1,0 +1,18 @@
+\section{Methodology}
+
+\paragraph{Data collection.}
+We query Google News RSS for “\texttt{\{TICKER\} stock}” and parse results with \texttt{feedparser}. We retain headline, source, URL, and UTC publish time. We deduplicate by (ticker, headline). For prices we use daily OHLC from Stooq (free end-of-day feed) to avoid API throttling issues; we form same-day open$\to$close returns $r_{d}=(\mathrm{Close}-\mathrm{Open})/\mathrm{Open}$. See code and CSVs (\texttt{headlines.csv}, \texttt{prices.csv}) for reproducibility \citep{feedparser,stooq}.
+
+\paragraph{Sentiment scoring.}
+We score each headline with two models implemented via \texttt{transformers} \citep{wolf2020transformers}:
+\begin{itemize}
+  \item \textbf{FinBERT} \citep{araci2019finbert,prosusfinbert} (finance-tuned). We convert class probabilities to a scalar sentiment $s=\Pr(\text{pos})-\Pr(\text{neg})$.
+  \item \textbf{DistilBERT} \citep{sanh2019distilbert,sst2} (general sentiment). We likewise map SST-2 scores to $s$.
+\end{itemize}
+For each (date, ticker) we average headline scores into a daily sentiment $\bar{s}_{d,t}$. We also compute an optional $3$-day rolling mean $\tilde{s}_{d,t}=\frac{1}{3}\sum_{k=0}^{2}\bar{s}_{d-k,t}$ for visualization stability.
+
+\paragraph{Alignment and sample.}
+We inner-join daily sentiment with price returns on (date, ticker). In the present run, this yields $\sim$200--250 aligned observations (dependent on news frequency) across the nine tickers, with $\sim$140 trading days of prices (Stooq). All derived files are saved (\texttt{headlines\_scored.csv}, \texttt{daily\_sentiment.csv}, \texttt{joined\_sentiment\_returns.csv}) to support replication.
+
+\paragraph{Estimation and tests.}
+We report Pearson correlations $r(\bar{s}_{d,t}, r_{d,t})$ overall and by sector/ticker, with $p$-values and bootstrap CIs where noted. Plots include sentiment–return scatter with fitted line, rolling sentiment time series, and per-ticker summaries. We treat these as \emph{associations}, not trading rules.
